@@ -135,8 +135,20 @@ function revertState() {
 }
 
 function saveImage() {
-	var dataURL = $("canvas").toDataURL();
-	window.location.href = dataURL;
+	var dataURL = $("canvas").toDataURL("image/png");
+	
+	new Ajax.Request(
+		"saveimg.php",
+		{
+			method: "POST",
+			onSuccess: callback,
+			parameters: { "dataURL": dataURL, "imgNum": imgNum }
+		}
+	);
+}
+
+function callback() {
+	// Do something after successfully saved image
 }
 
 function mouseUp() {
