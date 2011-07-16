@@ -5,6 +5,7 @@ require_once("config.inc.php"); ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 T
 <head>
 	<title>Pictionary - <?php echo $title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon"> 
 	<?php require_once("meta.inc.php") ?>
 </head>
 
