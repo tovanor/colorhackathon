@@ -5,6 +5,12 @@ require_once("inc/header.inc.php");
 $act = (isset($_POST['act']))? $_POST['act'] : '';
 
 if($act == '') { // Form for user to enter
+	// Check if user is logged in
+	if($_c['fb_user'] == NULL) {
+		echo "You must be logged in to view this page!";
+		require_once('inc/header.inc.php');
+		die();
+	}
 	?>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 	<input type="hidden" name="act" value="new" />
@@ -21,6 +27,13 @@ else { // Create new post
 	    ?>
 		<meta http-equiv="REFRESH" content="0;url=index.php">
 		<?php
+	}
+	
+	// Check if user is logged in
+	if($_c['fb_user'] == NULL) {
+		echo "You must be logged in to view this page!";
+		require_once('inc/header.inc.php');
+		die();
 	}
 	
 	// Create a new thread
