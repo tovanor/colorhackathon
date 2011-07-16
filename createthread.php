@@ -17,23 +17,27 @@ if($act == '') { // Form for user to enter
 }
 else { // Create new post
 	// Error checking
-	if(!isset($_POST['sentence']) || !isset($_POST['text'])) {
+	if(!isset($_POST['sentence']) || !isset($_POST['email'])) {
 	    echo "Both fields must be entered!";
 	    require_once("inc/footer.inc.php");
 	    die();
 	}
 	
 	// Create a new thread
-	$c_mysqli->query("INSERT INTO `threads` (`num_turns`) VALUES ('1')");
-	/*
-		user_id    varchar
-		-thread_id    int
-		-turn_number    tinyint
-		-content    text
-		-type    enum
-	*/
+	$c_mysqli->query("INSERT INTO `threads` (`num_turns`) VALUES ('1')") or die($c_mysqli->error);
+	$thread_id = $c_mysqli->insert_id;
+	$sentence = addslashes($_POST['sentence']);
+	
 	// Create first post; use a test user for now
-	$c_mysqli->query("INSERT INTO `turns` (`user_id`,`thread_id`,`turn_number`,`content`,`type`) VALUES ('0','','1','$','')");
+	$c_mysqli->query("INSERT INTO `turns` 
+		(`user_id`,`thread_id`,`turn_number`,`content`,`type`) 
+		VALUES ('0','$thread_id','1','$sentence','sentence')") or die($c_mysqli->error);
+	$turn_id = $c_mysqli->insert_id;
+	
+	// User has successfully created a new thread; redirect them to their thread's main page
+	?>
+	<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $turn_id; ?>"></HEAD>
+	<?php
 }
 
 require_once("inc/footer.inc.php"); ?>

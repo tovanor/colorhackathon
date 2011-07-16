@@ -1,0 +1,84 @@
+body {
+	-webkit-user-select: none;
+}
+
+#frame {
+	height: 500px;
+	width: 750px;
+	margin: 0px auto;
+	color: black;
+	background-color: white;
+	border: 2px solid #6BABCE;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+}
+
+#toolbox {
+	float: left;
+	height: 440px;
+	width: 100px;
+	padding: 30px 25px;
+	background-color: #6BABCE;
+	-moz-border-radius-topleft: 13px;
+	-moz-border-radius-bottomleft: 13px;
+	-webkit-border-top-left-radius: 13px;
+	-webkit-border-bottom-left-radius: 13px;
+}
+
+table, #currentColor {
+	margin: 0px auto;
+}
+
+/* Tools */
+#tools #save {
+	margin-bottom: 16px;
+}
+
+#tools td, #tools div {
+	border: 1px solid #6BABCE;
+	background-color: white;
+	text-align: center;
+	cursor: pointer;
+}
+
+#tools div {
+	width: 26px;
+	margin: 0px auto;
+}
+
+#tools img {
+	padding: 3px 5px;
+}
+
+/* Colors */
+#colors {
+	margin-top: 40px;
+	display: none;
+}
+
+#colors td {
+	height: 20px;
+	width: 20px;
+	border: 1px solid #6BABCE;
+	padding: 0px;
+	cursor: pointer;
+}
+
+#currentColor {
+	height: 40px;
+	width: 40px;
+	margin-top: 20px;
+}
+
+canvas {
+	float: left;
+	height: 100%;
+	width: 80%;
+}
+
+#nocanvas {
+	margin: 50px;
+	margin-left: 200px;
+}

@@ -14,4 +14,25 @@ body {
 	background-image: url(../images/background.png);
 }
 
+a.button {
+    display:inline-block;
+    height:58px;
+    padding-top:30px;
+    text-align:center;
+    text-decoration:none;
+}
 
+a.back-button {
+    background-image:url('../images/button-back.png');
+    width:208px;;
+}
+
+a.small-button {
+    background-image:url('../images/button-small.png');
+    width:320px;
+}
+
+a.big-button {
+    background-image:url('../images/button-big.png');
+    width:640px;
+}
