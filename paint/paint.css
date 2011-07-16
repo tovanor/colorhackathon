@@ -11,7 +11,8 @@ body {
 }
 
 #toolbox {
-	position: absolute;
+	position: relative;
+	top: 30px;
 }
 
 #toolbox, #tools {
@@ -29,7 +30,7 @@ table, #currentColor {
 }
 
 #tools td, #tools div {
-	border: 1px solid #6BABCE;
+	/*border: 1px solid #6BABCE;*/
 	background-color: white;
 	text-align: center;
 	cursor: pointer;
@@ -42,7 +43,6 @@ table, #currentColor {
 
 #tools img {
 	padding: 3px 5px;
-	border: 1px solid white;
 }
 
 /* Colors */

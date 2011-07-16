@@ -50,22 +50,22 @@ else { // Create new post
 	$turn_id = $c_mysqli->insert_id;
 	
 	// Send the email
-	$user = $_c['fb']->api("/me");
-	$email = $_POST['email'];
-	$subject = $user['name'] . " has invited you to play ComiCrazy!";
-	$message = $user['first_name'] . " has invited you to play ComiCrazy!\n\n To play, follow this link:\n
-	http://comicrazy.dyndns.org/dev/\n\nThanks for playing!";
-	$headers = "From: The ComiCrazy Team";
+	//$user = $_c['fb']->api("/me");
+	//$email = $_POST['email'];
+	//$subject = $user['name'] . " has invited you to play ComiCrazy!";
+	//$message = $user['first_name'] . " has invited you to play ComiCrazy!\n\n To play, follow this link:\n
+	//http://comicrazy.dyndns.org/dev/\n\nThanks for playing!";
+	//$headers = "From: The ComiCrazy Team";
 	
 	//echo "email: $email<br /><br />subject: $subject<br /><br />";
 	//echo "message: $message<br /><br />headers: $headers<br />";
-	if(!mail($email, $subject, $message, $headers)) {
-		echo 'Failed to send welcome email.';
-		die();
-        }
+	//if(!mail($email, $subject, $message, $headers)) {
+	//	echo 'Failed to send welcome email.';
+	//	die();
+        //}
 	// User has successfully created a new thread; redirect them to their thread's main page
 	?>
-	<!--<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $thread_id; ?>">-->
+	<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $thread_id; ?>">
 	<?php
 }
 

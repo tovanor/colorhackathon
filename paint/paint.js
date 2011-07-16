@@ -164,10 +164,10 @@ function changeColor() {
 function changeTool() {
 	currentTool = this.id;
 	if (currentTool == "pencil") {
-		$("canvas").style.cursor = "url(" + prefix + "pencil.png) 0 16, crosshair";
+		$("canvas").style.cursor = "url(" + prefix + "pencil.png) 0 88, crosshair";
 		ctx.strokeStyle = $("currentColor").style.backgroundColor;
 		ctx.fillStyle = $("currentColor").style.backgroundColor;
-		ctx.lineWidth = 2;
+		ctx.lineWidth = 3;
 		ctx.lineCap = "butt";
 		ctx.globalCompositeOperation = "source-over";
 		
