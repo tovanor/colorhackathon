@@ -15,9 +15,7 @@ if($_SERVER['DOCUMENT_ROOT'] != "/var/www") {
 	  $loginUrl = $facebook->getLoginUrl();
 	}
 }
-
  ?>
-
 <p>
 Welcome to the index page!<br /><br />
 <a href="createthread.php">Create a new thread!</a>
@@ -40,25 +38,20 @@ while($t = $completed_threads->fetch_object()) {
 }
 
 if($_SERVER['DOCUMENT_ROOT'] != "/var/www") {
-	?>
-
-		<h1>php-sdk</h1>
-
-		<?php if ($user): ?>
-		  <a href="<?php echo $logoutUrl; ?>">Logout</a>
-		<?php else: ?>
-		  <div>
-		    Login using OAuth 2.0 handled by the PHP SDK:
-		    <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
-		  </div>
-		<?php endif ?>
-
-		<?php if ($user): ?>
-		  <h3>You</h3>
-		  <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-		     <?php else: ?>
-		  <strong><em>You are not Connected.</em></strong>
-		<?php endif ?>
+	
+	if ($user) { 
+	  echo '<a href="' . $logoutUrl . '">Logout</a>';
+	else { 
+	  echo "<div>
+	    <a href='$loginUrl'>Login with Facebook</a>
+	  </div>";
+	}
+	if ($user) {
+	  echo "<h3>You</h3>
+	  <img src='https://graph.facebook.com/$user/picture'>";
+	else {
+	  echo "<strong><em>You are not Connected.</em></strong>";
+	}
 <?php
 }
 require_once("inc/footer.inc.php"); ?>

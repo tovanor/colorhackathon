@@ -28,6 +28,8 @@ if($act == "post") {
     if (isset($_POST["canvasinput"])) {
     	// Get the data
     	$imageData = $_POST["canvasinput"];
+	$_POST['filename'] = str_replace(".", "", $_POST['filename']); // more secure
+	$_POST['filename'] = str_replace("/", "", $_POST['filename']); // more secure
     	$filename = "userimages/" . $_POST["filename"] . ".png";
 
     	// Remove the headers (data:,) part.  
@@ -41,8 +43,10 @@ if($act == "post") {
     	// but a real application can specify filename in POST variable
     	touch($filename);
     	$fp = fopen($filename, 'wb');
-    	fwrite( $fp, $unencodedData);
-    	fclose( $fp );
+	if ($fp) {
+		fwrite( $fp, $unencodedData);
+		fclose( $fp );
+	}
     }
     
 	$content = (isset($_POST['content']))? $_POST['content'] : $filename;
