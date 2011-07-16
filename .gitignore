@@ -2,3 +2,4 @@ includes/
 bak/
 config_vars.inc.php
 *.swp
+userimages/
