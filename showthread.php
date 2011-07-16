@@ -8,7 +8,7 @@ $act = (isset($_POST['act']))? $_POST['act'] : '';
 $filename = '';
 if($thread_id == '') {
 	?>
-	<meta http-equiv="REFRESH" content="0;url=index.php"></HEAD>
+	<meta http-equiv="REFRESH" content="0;url=index.php">
 	<?php
 }
 
@@ -73,7 +73,8 @@ if($act == "post") {
 }
 
 // Get the given game
-$turns = $c_mysqli->query("SELECT * FROM `turns` WHERE `thread_id` = '$thread_id' ORDER BY turn_number DESC"); // Most recent at top
+// Most recent at top
+$turns = $c_mysqli->query("SELECT * FROM `turns` WHERE `thread_id` = '$thread_id' ORDER BY turn_number DESC");
 $num_rows = $turns->num_rows;
 if($num_rows == 0) {
 	echo "This thread does not exist!";
@@ -124,6 +125,8 @@ else if($num_rows < 10) {
 	<?php
 }
 else { // Game is finished; display everything
+	// Most recent at bottom
+	$turns = $c_mysqli->query("SELECT * FROM `turns` WHERE `thread_id` = '$thread_id' ORDER BY turn_number ASC");
 	while($turn = $turns->fetch_object()) {
 		echo "<br />";
 		if($turn->type == "url") { // Game is not finished

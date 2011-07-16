@@ -18,9 +18,9 @@ if($act == '') { // Form for user to enter
 else { // Create new post
 	// Error checking
 	if(!isset($_POST['sentence']) || !isset($_POST['email'])) {
-	    echo "Both fields must be entered!";
-	    require_once("inc/footer.inc.php");
-	    die();
+	    ?>
+		<meta http-equiv="REFRESH" content="0;url=index.php">
+		<?php
 	}
 	
 	// Create a new thread
