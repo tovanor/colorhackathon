@@ -12,27 +12,77 @@ footer {
 
 body {
 	background-image: url(../images/background.png);
+	padding: 30px;
 }
 
-a.button {
-    display:inline-block;
-    height:58px;
+a {
+    font-family: 'Varela Round', sans-serif;
+    font-color: #333;
+}
+
+a:active {
+    color:#333;
+}
+
+.fancy {
+    font-family: 'Indie Flower', cursive;
+	font-size: 24px;
+	font-color: #333;
+}
+
+.buttonContainer {
+    width:640px;
+    margin:0px auto;
+}
+
+.button {
+    height:60px;
+    padding-top:24px;
+    padding-left:5px;
+    text-align:center;
+    text-decoration:none;
+    font-size: 30px;
+}
+
+.button a {
     padding-top:30px;
     text-align:center;
     text-decoration:none;
+    font-size: 30px;
 }
 
-a.back-button {
+.back-button {
     background-image:url('../images/button-back.png');
-    width:208px;;
+    width:208px;
+    margin:auto 30px 10px;
 }
 
-a.small-button {
+.small-button {
     background-image:url('../images/button-small.png');
     width:320px;
 }
 
-a.big-button {
+.big-button {
     background-image:url('../images/button-big.png');
     width:640px;
+    margin:0px auto;
+    
+}
+
+.postit-write {
+    margin:0px auto;
+    background-image:url('../images/postit-write.png');
+    text-align:center;
+    background-repeat:no-repeat;
+    width:640px;
+    height:131px;
+    padding-top:80px;
+}
+
+.postit-draw {
+    margin:0px auto;
+    background-image:url('../images/postit-draw.png');
+    background-repeat:no-repeat;
+    width:640px;
+    height:575px;
 }
