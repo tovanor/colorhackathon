@@ -1,6 +1,6 @@
 	</div>
 	<div id="footer">
-		<br />This is the footer!
+		<br /><a href="about.php">About ComiCrazy</a> 
 	</div>
 
 </div>
