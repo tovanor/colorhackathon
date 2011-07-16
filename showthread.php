@@ -28,8 +28,8 @@ if($act == "post") {
     if (isset($_POST["canvasinput"])) {
     	// Get the data
     	$imageData = $_POST["canvasinput"];
-	$_POST['filename'] = str_replace(".", "", $_POST['filename']); // more secure
-	$_POST['filename'] = str_replace("/", "", $_POST['filename']); // more secure
+    	$chars = array(".","/","\\"," ","'","\"");
+		$_POST['filename'] = str_replace($chars, "", $_POST['filename']); // more secure
     	$filename = "userimages/" . $_POST["filename"] . ".png";
 
     	// Remove the headers (data:,) part.  
@@ -43,10 +43,17 @@ if($act == "post") {
     	// but a real application can specify filename in POST variable
     	touch($filename);
     	$fp = fopen($filename, 'wb');
-	if ($fp) {
-		fwrite( $fp, $unencodedData);
-		fclose( $fp );
-	}
+		if ($fp) {
+			fwrite( $fp, $unencodedData);
+			fclose( $fp );
+		}
+    }
+    else { // Check that the length of chars is less than 110 characters
+    	if($_POST['content'][110]) {
+    		echo "Content must be less than 110 charactes. Please <a href='showthread.php?id=$thread_id'>go back and try again.</a>";
+    		require_once("inc/footer.inc.php");
+    		die();
+    	}
     }
     
 	$content = (isset($_POST['content']))? $_POST['content'] : $filename;
@@ -143,7 +150,6 @@ else { // Game is finished; display everything
 		else {
 			echo '<div class="postit-write"><br /><div class="fancy">' . $turn->content . '</div></div>';
 		}
-		echo "";
 	}
 }
 
