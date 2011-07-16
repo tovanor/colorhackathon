@@ -1,7 +1,7 @@
-	</div>
-	<div id="footer">
-		<br />This is the footer!
-	</div>
+		<div id="footer">
+			&copy;2011 Ningterns - 
+			<a href="about.php">About Us</a>	
+		</div>
 
 </div>
 
