@@ -1,5 +1,5 @@
 var CANVAS_HEIGHT = 500;
-var CANVAS_WIDTH = 600;
+var CANVAS_WIDTH = 550;
 var dragging = false;
 var currentTool = "pencil"; // Possible tools are "pencil", "eraser", "floodFill", "stamp"
 var offsetX; // Distance from canvas to left of screen
@@ -8,7 +8,8 @@ var oldX = 0; // The mouse's previous x position
 var oldY = 0; // The mouse's previous y position
 var ctx; // Drawing context
 var undoStack = []; // Stack containing imageData of previous states
-var prefix = "paint/";
+//var prefix = "paint/";
+var prefix = "";
 
 var eraser = new Image();
 eraser.src = prefix + "eraserCursor.png";
@@ -29,37 +30,24 @@ Event.observe(window, 'load', function() {
 	offsetX = $("canvas").offsetLeft;
 	
 	// Setup tools
-	var tools = ["pencil", "eraser"];
+	var tools = ["pencil", "eraser", "undo"];
 	var table = document.createElement("table");
 	
-	var tr;
 	for (var i = 0; i < tools.length; i++) {
-		if (i % 2 == 0)
-			tr = document.createElement("tr");
-		var td = document.createElement("td");
-		td.id = tools[i];
-		td.onclick = changeTool;
-		var img = document.createElement("img");
-		img.src = prefix + tools[i] + ".png";
-		img.alt = "";
-		img.title = tools[i].charAt(0).toUpperCase() + tools[i].substring(1);
-		td.appendChild(img);
-			tr.appendChild(td);
-		if (i % 2 == 1) {
-			table.appendChild(tr);
+		var tool = document.createElement("img");
+		tool.id = tools[i];
+		if (i < 2) {
+			tool.onclick = changeTool;
 		}
+		else {
+			tool.onclick = revertState;
+		}
+		tool.src = prefix + tools[i] + ".png";
+		tool.alt = "";
+		tool.title = tools[i].charAt(0).toUpperCase() + tools[i].substring(1);
+		$("tools").appendChild(tool);
 	}
-	$("tools").appendChild(table);
 	
-	var img = document.createElement("img");
-	img.src = prefix + "undo.png";
-	img.alt = "";
-	img.title = "Undo";
-	var undo = document.createElement("div");
-	undo.id = "undo";
-	undo.onclick = revertState;
-	undo.appendChild(img);
-	$("tools").appendChild(undo);
 	
 	// Setup colors
 	var colors = ["0, 0, 0", "80, 80, 80", "160, 160, 160", "255, 255, 255", "255, 0, 0", "255, 128, 128", "255, 165, 0", "255, 210, 128", "255, 255, 0", "255, 255, 128", "0, 128, 0", "64, 128, 64", "0, 0, 255", "128, 128, 255", "75, 0, 130", "103, 65, 130", "237, 0, 237", "237, 119, 237"];
