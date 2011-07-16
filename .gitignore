@@ -1,3 +1,4 @@
-config.inc.php
 includes/
+bak/
+config_vars.inc.php
 *.swp
