@@ -119,6 +119,7 @@ else if($num_rows < 10) {
 		include($_SERVER['DOCUMENT_ROOT'] . "/color/paint/index.php");
 		?>
 		<input type="hidden" name="filename" value="<?php echo $filename ?>">
+		<input type="hidden" id="canvasinput" name="canvasinput" value="golf" />
 		<?php
 	}
 	?>
