@@ -1,12 +1,18 @@
-
-header {
-	padding-top: 10px;
-	padding-bottom: 5px;
-	margin-bottom: 10px;
-	background-color: #99CCFF;
+#header {
+	display:block;
+	width:640px;
+	text-align:center;
+	margin:0px auto 10px auto;
 }
 
-footer {
+#header .logo {
+    display:inline;
+    text-align:center;
+    margin:0px auto 15px auto;
+    width:400px;
+}
+
+#footer {
 	margin-bottom: 10px;
 }
 
@@ -99,3 +105,4 @@ textarea {
     text-align: center;
     padding-top: 18px;
 }
+

@@ -1,8 +1,7 @@
-	</div>
 	<div id="footer">
-		<br /><a href="about.php">About ComiCrazy</a> 
+		<br />&copy;2011 Ningterns - 
+		<a href="about.php">About us</a> 
 	</div>
-
 </div>
 
 </body>

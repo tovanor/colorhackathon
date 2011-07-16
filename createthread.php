@@ -17,7 +17,7 @@ if($act == '') { // Form for user to enter
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 	<input type="hidden" name="act" value="new" />
 	Sentence:<br /> <textarea name="sentence" cols="40" rows="4"></textarea><br />
-	Send to friend (email): <input type="text" name="email" /><br />
+	Tell a friend (email): <input type="text" name="email" /><br />
 	<input type="submit" name="createnew" value="Create!" /><br />
 	</form>
 
@@ -25,7 +25,7 @@ if($act == '') { // Form for user to enter
 }
 else { // Create new post
 	// Error checking
-	if(!isset($_POST['sentence']) || !isset($_POST['email'])) {
+	if(!isset($_POST['sentence'])) {
 	    ?>
 		<meta http-equiv="REFRESH" content="0;url=index.php">
 		<?php
@@ -49,9 +49,21 @@ else { // Create new post
 		VALUES ('0','$thread_id','1','$sentence','sentence')") or die($c_mysqli->error);
 	$turn_id = $c_mysqli->insert_id;
 	
+	// Send the email
+	$email = $_POST['email'];
+	$subject = $_c['fb_user']['name'] . " has invited you to play ComiCrazy!";
+	$message = $_c['fb_user']['name'] . " has invited you to play ComiCrazy!\n\n To play, follow this link:\n
+	http://comicrazy.dyndns.org/dev/\n\nThanks for playing!";
+	$headers = "From: The ComiCrazy Team";
+	
+	echo "email: $email<br /><br />subject: $subject<br /><br />";
+	echo "message: $message<br /><br />headers: $headers<br />";
+	
+	//	$tpl->error('Failed to send welcome email.');
+    //}
 	// User has successfully created a new thread; redirect them to their thread's main page
 	?>
-	<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $thread_id; ?>"></HEAD>
+	<!--<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $thread_id; ?>">-->
 	<?php
 }
 
