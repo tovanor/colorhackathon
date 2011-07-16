@@ -12,7 +12,7 @@ if($act == '') {
 	?>
 	<form action="search.php" method="GET">
 	<input type="text" length="45" name="searchval" /><br />
-	<input type="submit" name="search" value="Search!" />
+	<input type="submit" name="search" value="Search comic archives" class="big-button" />
 	</form>
 	<?php
 }

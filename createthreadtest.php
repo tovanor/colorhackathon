@@ -17,11 +17,51 @@ if($act == '') { // Form for user to enter
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 	<input type="hidden" name="act" value="new" />
 	Sentence:<br /> <textarea name="sentence" cols="40" rows="4"></textarea><br />
-	Send to friend (email): <input type="text" name="email" /><br />
+	Send to friend (email): <input type="text" name="email" id="select_friend"/><br />
 	<input type="submit" name="createnew" value="Create!" /><br />
 	</form>
 
+	<div id="fb-root"></div>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
+	<script>
+	  FB.init({
+	    appId  : '254660987881741',
+	    status : true, // check login status
+	    cookie : true, // enable cookies to allow the server to access the session
+	    xfbml  : true  // parse XFBML
+	  });
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		    FB.api('/me/friends', function(fbresponse){
+
+			$("#select_friend").autocomplete({
+				source : function(request, response){
+				    response($.map(fbresponse.data, function(e){
+					return{
+					    id : e.id, 
+					    name : e.name
+					}
+				    }))
+				},
+			    });
+/*
+.data("autocomplete")._renderItem = function(ul, item){
+				    return $("<li></li>"); }; */
+/*
+				    return $("<li></li>")
+					    .data("item.autocomplete", item)
+					    .append( $("<a></a>").html(item.name) )
+					    .appendTo(ul); 
+					}; */
+
+		    });
+		});
+	</script>
 	<?php
+		 /* //$("#select_friend").autocomplete("http://graph.facebook.com/<?php echo $_c['fb_user'] ?>/friends "); */
 }
 else { // Create new post
 	// Error checking
