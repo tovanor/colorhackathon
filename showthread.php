@@ -83,6 +83,10 @@ if($num_rows == 0) {
 }
 else if($num_rows < 10) {
 	// Display only the most recent turn
+	
+	// since the thread is not finished, only the user who is next on the list for the thread is allowed to view it
+	// Check the user here, starting with whether or not they are allowed to log 
+	
 	$turn = $turns->fetch_object();
 	if($turn->type == "url") { // Game is not finished
 		echo '<div class="postit-draw"><br /><img src="' . $turn->content . '" /></div>';
