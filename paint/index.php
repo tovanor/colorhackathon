@@ -8,13 +8,12 @@
 </head>
 <body>
 		<div class="cloud">
-			<h2>Paint</h2>
 			<div id="frame">
 				<div id="toolbox">
 					<div id="tools"></div>
 					<div id="colors"></div>
 				</div>
-				<canvas id="canvas" width="600" height="500">
+				<canvas id="canvas" width="500" height="500">
 					<div id="nocanvas">
 					</div>
 				</canvas>

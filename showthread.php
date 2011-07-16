@@ -89,13 +89,12 @@ else if($num_rows < 10) {
 		$form = 'Sentence:<br /> <textarea name="content" cols="40" rows="4"></textarea><br />';
 	}
 	else {
-		echo '<div class="postit-write"><br />' . $turn->content . '</div>';
+		echo '<div class="postit-write"><div class="fancy"><br />' . $turn->content . '</div></div>';
 		$form = "This is the script to display the drawing box.\n";
 		$filename = $thread_id . "_" . $turn->id;
 	}
 	
-	echo "<br /><br />\n
-	------------<br /><br />\n";
+	echo "<br /><br />\n";
 	
 	// Display the box for adding a new turn if the thread is not complete
 	// Need to have a check here to see if the user has posted on the thread.
@@ -107,10 +106,12 @@ else if($num_rows < 10) {
 	<input type="hidden" name="type" value="<?php ?>" />
 	<?php
 	if($turn->type == "url") {
-		echo 'Sentence:<br /> <textarea name="content" cols="40" rows="4"></textarea><br />';
+		echo '<div class="postit-write"><div class="fancy">Describe the picture!<br /><textarea name="content" cols="70" rows="4" style="background-color: transparent; border: 2px solid gray;"></textarea><br /></div></div>';
 	}
 	else {
-		include($_SERVER['DOCUMENT_ROOT'] . "/color/paint/index.php");
+		echo '<div class="postit-draw">';
+		include("color/paint/index.php");
+		echo '</div>';
 		?>
 		<input type="hidden" name="filename" value="<?php echo $filename ?>">
 		<input type="hidden" id="canvasinput" name="canvasinput" />
@@ -128,15 +129,13 @@ else { // Game is finished; display everything
 	// Most recent at bottom
 	$turns = $c_mysqli->query("SELECT * FROM `turns` WHERE `thread_id` = '$thread_id' ORDER BY turn_number ASC");
 	while($turn = $turns->fetch_object()) {
-		echo "<br />";
 		if($turn->type == "url") { // Game is not finished
-			echo '<img src="' . $turn->content . '" />';
+			echo '<div class="postit-draw"><br /><img src="' . $turn->content . '" /></div>';
 		}
 		else {
-			echo $turn->content;
+			echo '<div class="postit-write"><br /><div class="fancy">' . $turn->content . '</div></div>';
 		}
-		echo "<br /><br />
-		------------<br />";
+		echo "";
 	}
 }
 
