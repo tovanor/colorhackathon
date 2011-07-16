@@ -63,7 +63,8 @@ CREATE TABLE `turns` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  KEY `thread_id` (`thread_id`)
+  KEY `thread_id` (`thread_id`),
+  CONSTRAINT `turns_ibfk_1` FOREIGN KEY (`thread_id`) REFERENCES `threads` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,4 +86,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-07-15 20:07:41
+-- Dump completed on 2011-07-15 20:39:29
