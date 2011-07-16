@@ -36,7 +36,7 @@ else { // Create new post
 	
 	// User has successfully created a new thread; redirect them to their thread's main page
 	?>
-	<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $turn_id; ?>"></HEAD>
+	<meta http-equiv="REFRESH" content="0;url=showthread.php?id=<?php echo $thread_id; ?>"></HEAD>
 	<?php
 }
 
