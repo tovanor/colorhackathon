@@ -9,6 +9,7 @@ var oldY = 0; // The mouse's previous y position
 var ctx; // Drawing context
 var undoStack = []; // Stack containing imageData of previous states
 var prefix = "paint/";
+//var prefix = "";
 
 var eraser = new Image();
 eraser.src = prefix + "eraserCursor.png";
@@ -100,7 +101,7 @@ function mouseDown(e) {
 	
 	else if (currentTool == "eraser") {
 		ctx.beginPath();
-		ctx.arc(currentX, currentY, 8, 0, Math.PI * 2, false);
+		ctx.arc(currentX, currentY, 16, 0, Math.PI * 2, false);
 		ctx.fill();
 	}
 }
@@ -173,10 +174,10 @@ function changeTool() {
 	}
 	
 	else if (currentTool == "eraser") {
-		$("canvas").style.cursor = "url(" + prefix + "eraserCursor.png) 8 8, crosshair";
+		$("canvas").style.cursor = "url(" + prefix + "eraserCursor.png) 16 16, crosshair";
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
-		ctx.lineWidth = 16;
+		ctx.lineWidth = 32;
 		ctx.lineCap = "round";
 		ctx.globalCompositeOperation = "destination-out";
 		
