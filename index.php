@@ -16,12 +16,12 @@ if($_SERVER['DOCUMENT_ROOT'] != "/var/www") {
 	}
 }
  ?>
+<p class="big-button">
+	<a href="createthread.php">Create comic</a>
+</p>
+
 <p>
-Welcome to the index page!<br /><br />
-<a href="createthread.php">Create a new thread!</a>
-</p><br />
-<p>
-Search for a thread:
+Search old comics
 </p>
 <?php
 include('search.php');
