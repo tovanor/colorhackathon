@@ -3,12 +3,9 @@ $title = "Index!";
 require_once("inc/header.inc.php");
 
 if($_SERVER['DOCUMENT_ROOT'] != "/var/www") {
-	require 'php-sdk/src/facebook.php';
-
 	// Create our Application instance (replace this with your appId and secret).
-	$facebook = new Facebook($_c['fb']);
-
-
+	
+	$facebook = $_c['fb'];
 
 	// Get User ID
 	$user = $facebook->getUser();
