@@ -9,12 +9,14 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-  font: 13px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: 'Varela Round', sans-serif;
+  font-color: #333;
 }
 
 pre,
 code {
-  font-family: 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+  font-family: 'Varela Round', sans-serif;
+  font-color: #333;
 }
 
 hr {
@@ -22,6 +24,12 @@ hr {
   border-top-width: 1px;
   clear: both;
   height: 0;
+}
+
+handwriting {
+	font-family: 'Indie Flower', cursive;
+	font-size: 24px;
+	font-color: #333;
 }
 
 /* `Headings
