@@ -1,4 +1,4 @@
-<? 
+<?php
 $title = "Index!";
 require_once("inc/header.inc.php") ?>
 
