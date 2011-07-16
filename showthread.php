@@ -110,7 +110,7 @@ else if($num_rows < 10) {
 	}
 	else {
 		echo '<div class="postit-draw">';
-		include("color/paint/index.php");
+		include("paint/index.php");
 		echo '</div>';
 		?>
 		<input type="hidden" name="filename" value="<?php echo $filename ?>">
