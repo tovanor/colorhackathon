@@ -8,8 +8,8 @@ var oldX = 0; // The mouse's previous x position
 var oldY = 0; // The mouse's previous y position
 var ctx; // Drawing context
 var undoStack = []; // Stack containing imageData of previous states
-//var prefix = "paint/";
-var prefix = "";
+var prefix = "paint/";
+//var prefix = ""
 
 var eraser = new Image();
 eraser.src = prefix + "eraserCursor.png";
