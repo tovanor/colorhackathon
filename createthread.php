@@ -16,9 +16,9 @@ if($act == '') { // Form for user to enter
 	?>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 	<input type="hidden" name="act" value="new" />
-	Sentence:<br /> <textarea name="sentence" cols="40" rows="4"></textarea><br />
+	Write a sentence to start the game:<br /> <textarea class="postit-write" name="sentence" cols="40" rows="4"></textarea><br />
 	Tell a friend (email): <input type="text" name="email" /><br />
-	<input type="submit" name="createnew" value="Create!" /><br />
+	<input type="submit" name="createnew" value="Create!" class="big-button" /><br />
 	</form>
 
 	<?php

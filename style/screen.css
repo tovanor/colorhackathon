@@ -86,15 +86,15 @@ textarea {
     border: none;
     cursor: pointer;
     width:920px;
-    padding: 25px;
-    padding-bottom: 35px;
     text-align: center;
     display: block;
     margin:0px auto;
-    
-}
+    }
 
-.big-button a {
+.big-button a, input.big-button {
+    display: block;
+    padding: 25px;
+    padding-bottom: 35px;
     color: black;
     text-decoration: none;
 }
@@ -102,12 +102,11 @@ textarea {
 
 .postit-write {
     margin:0px auto;
-    background-image:url('../images/postit-write.png');
-    text-align:center;
-    background-repeat:no-repeat;
-    width:640px;
-    height:191px;
-    padding-top:20px;
+    background: url('../images/postit-write.png') transparent no-repeat;
+    padding: 50px;
+    width:540px;
+    height:149px;
+    border: none;
 }
 
 .postit-draw {
