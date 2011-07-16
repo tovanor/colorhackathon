@@ -1,5 +1,5 @@
 var CANVAS_HEIGHT = 500;
-var CANVAS_WIDTH = 550;
+var CANVAS_WIDTH = 500;
 var dragging = false;
 var currentTool = "pencil"; // Possible tools are "pencil", "eraser", "floodFill", "stamp"
 var offsetX; // Distance from canvas to left of screen

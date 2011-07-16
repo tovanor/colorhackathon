@@ -20,6 +20,11 @@ a {
     font-color: #333;
 }
 
+p {
+	font-family: 'Varela Round', sans-serif;
+    font-color: #333;
+}
+
 a:active {
     color:#333;
 }
@@ -29,6 +34,12 @@ a:active {
 	font-size: 24px;
 	font-color: #333;
 }
+textarea { 
+	font-family: 'Indie Flower', cursive;
+	font-size: 16px;
+	font-color: #333;
+}
+
 
 .buttonContainer {
     width:640px;
@@ -75,8 +86,8 @@ a:active {
     text-align:center;
     background-repeat:no-repeat;
     width:640px;
-    height:131px;
-    padding-top:80px;
+    height:191px;
+    padding-top:20px;
 }
 
 .postit-draw {
@@ -84,5 +95,7 @@ a:active {
     background-image:url('../images/postit-draw.png');
     background-repeat:no-repeat;
     width:640px;
-    height:575px;
+    height:557px;
+    text-align: center;
+    padding-top: 18px;
 }
