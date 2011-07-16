@@ -6,7 +6,6 @@ require_once("inc/header.inc.php");
 $thread_id = (isset($_GET['id']))? $_GET['id'] : '';
 $act = (isset($_POST['act']))? $_POST['act'] : '';
 $filename = '';
-
 if($thread_id == '') {
 	?>
 	<meta http-equiv="REFRESH" content="0;url=index.php"></HEAD>
@@ -24,6 +23,31 @@ if($act == "post") {
 	    require_once("inc/footer.inc.php");
 	    die();
 	}
+	
+	// Save image if needed
+    if (isset($_POST["canvasinput"]))
+    {
+    	// Get the data
+    	$imageData = $_POST["canvasinput"];
+    	$filename = $_POST["filename"];
+
+    	// Remove the headers (data:,) part.  
+    	// A real application should use them according to needs such as to check image type
+    	$filteredData = substr($imageData, strpos($imageData, ",") + 1);
+
+    	// Need to decode before saving since the data we received is already base64 encoded
+    	$unencodedData = base64_decode($filteredData);
+
+    	//echo "unencodedData" . $unencodedData;
+
+    	// Save file.  This example uses a hard coded filename for testing, 
+    	// but a real application can specify filename in POST variable
+    	$fp = fopen("userimages/" . $filename . ".png", 'wb' );
+    	fwrite( $fp, $unencodedData);
+    	fclose( $fp );
+    }
+    
+	
 	
 	$content = addslashes($_POST['content']);
 	
@@ -88,6 +112,9 @@ else if($num_rows < 10) {
 	}
 	else {
 		include($_SERVER['DOCUMENT_ROOT'] . "/color/paint/index.php");
+		?>
+		<input type="hidden" name="filename" value="<?php echo $filename ?>">
+		<?php
 	}
 	?>
 	<br />

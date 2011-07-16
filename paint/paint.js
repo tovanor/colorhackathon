@@ -28,16 +28,6 @@ Event.observe(window, 'load', function() {
 	offsetY = $("canvas").offsetTop;
 	offsetX = $("canvas").offsetLeft;
 	
-	var img = document.createElement("img");
-	img.src = prefix + "save.png";
-	img.alt = "";
-	img.title = "Save";
-	var save = document.createElement("div");
-	save.id = "save";
-	save.onclick = saveImage;
-	save.appendChild(img);
-	$("tools").appendChild(save);
-	
 	// Setup tools
 	var tools = ["pencil", "eraser"];
 	var table = document.createElement("table");
@@ -158,6 +148,7 @@ function mouseUp() {
 		dragging = false;
 		undoStack.push(ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT));
 	}
+	$("canvasinput").value = $("canvas").toDataURL("image/png");
 }
 
 function mouseMove(e) {
