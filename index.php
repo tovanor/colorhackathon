@@ -28,6 +28,17 @@ include('search.php');
 
 echo "<br /><br />";
 
+// find all threads in progress
+echo "Incomplete Threads: ";
+$incomplete_threads = $c_mysqli->query("SELECT * FROM `threads` WHERE `num_turns` < 10");
+while($i = $incomplete_threads->fetch_object()) {
+	$first_thread = $c_mysqli->query("SELECT * FROM `turns` WHERE `thread_id` = '$i->id' AND `turn_number` = '1' LIMIT 1");
+	$ft = $first_thread->fetch_object();
+	echo '<a href="showthread.php?id=' . $i->id . '">' . $ft->content . '</a><br />';
+}
+
+echo "<br /><br />";
+
 // find and display all completed threads
 echo "Completed Threads:<br />\n";
 $completed_threads = $c_mysqli->query("SELECT * FROM `threads` WHERE `num_turns` = 10");
