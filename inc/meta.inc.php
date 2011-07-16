@@ -1,4 +1,3 @@
-<?php require_once("config_vars.inc.php"); ?>
 <script src="<?php echo CPATH; ?>js/jquery-1.6.1.min.js"></script>
 
 <link rel="stylesheet" href="<?php echo CPATH ?>style/reset.css" />
