@@ -8,9 +8,10 @@ var oldX = 0; // The mouse's previous x position
 var oldY = 0; // The mouse's previous y position
 var ctx; // Drawing context
 var undoStack = []; // Stack containing imageData of previous states
+var prefix = "paint/";
 
 var eraser = new Image();
-eraser.src = "eraserCursor.png";
+eraser.src = prefix + "eraserCursor.png";
 
 Event.observe(window, 'load', function() {
 	if (!$("canvas").getContext) return;
@@ -28,7 +29,7 @@ Event.observe(window, 'load', function() {
 	offsetX = $("canvas").offsetLeft;
 	
 	var img = document.createElement("img");
-	img.src = "save.png";
+	img.src = prefix + "save.png";
 	img.alt = "";
 	img.title = "Save";
 	var save = document.createElement("div");
@@ -49,7 +50,7 @@ Event.observe(window, 'load', function() {
 		td.id = tools[i];
 		td.onclick = changeTool;
 		var img = document.createElement("img");
-		img.src = tools[i] + ".png";
+		img.src = prefix + tools[i] + ".png";
 		img.alt = "";
 		img.title = tools[i].charAt(0).toUpperCase() + tools[i].substring(1);
 		td.appendChild(img);
@@ -61,7 +62,7 @@ Event.observe(window, 'load', function() {
 	$("tools").appendChild(table);
 	
 	var img = document.createElement("img");
-	img.src = "undo.png";
+	img.src = prefix + "undo.png";
 	img.alt = "";
 	img.title = "Undo";
 	var undo = document.createElement("div");
@@ -147,8 +148,9 @@ function saveImage() {
 	);
 }
 
-function callback() {
+function callback(ajax) {
 	// Do something after successfully saved image
+	ajax.responseText;
 }
 
 function mouseUp() {
@@ -183,7 +185,7 @@ function changeColor() {
 function changeTool() {
 	currentTool = this.id;
 	if (currentTool == "pencil") {
-		$("canvas").style.cursor = "url(pencil.png) 0 16, crosshair";
+		$("canvas").style.cursor = "url(" + prefix + "pencil.png) 0 16, crosshair";
 		ctx.strokeStyle = $("currentColor").style.backgroundColor;
 		ctx.fillStyle = $("currentColor").style.backgroundColor;
 		ctx.lineWidth = 2;
@@ -191,7 +193,7 @@ function changeTool() {
 	}
 	
 	else if (currentTool == "eraser") {
-		$("canvas").style.cursor = "url(eraserCursor.png) 8 8, crosshair";
+		$("canvas").style.cursor = "url(" + prefix + "eraserCursor.png) 8 8, crosshair";
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
 		ctx.lineWidth = 16;

@@ -19,5 +19,7 @@ if (isset($_POST["dataURL"]))
 	$fp = fopen($imgNum . ".png", 'wb' );
 	fwrite( $fp, $unencodedData);
 	fclose( $fp );
+	
+	echo $imgNum . ".png";
 }
 ?>
