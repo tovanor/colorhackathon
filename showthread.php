@@ -85,11 +85,11 @@ else if($num_rows < 10) {
 	// Display only the most recent turn
 	$turn = $turns->fetch_object();
 	if($turn->type == "url") { // Game is not finished
-		echo '<br /><img src="' . $turn->content . '" />';
+		echo '<div class="postit-draw"><br /><img src="' . $turn->content . '" /></div>';
 		$form = 'Sentence:<br /> <textarea name="content" cols="40" rows="4"></textarea><br />';
 	}
 	else {
-		echo '<br />' . $turn->content;
+		echo '<div class="postit-write"><br />' . $turn->content . '</div>';
 		$form = "This is the script to display the drawing box.\n";
 		$filename = $thread_id . "_" . $turn->id;
 	}
