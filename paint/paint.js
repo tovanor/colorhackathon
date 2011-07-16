@@ -168,7 +168,7 @@ function changeTool() {
 		ctx.fillStyle = $("currentColor").style.backgroundColor;
 		ctx.lineWidth = 2;
 		ctx.lineCap = "butt";
-		ctx.globalCompositeOperation = "";
+		ctx.globalCompositeOperation = "source-over";
 		
 	}
 	
