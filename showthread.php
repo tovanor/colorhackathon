@@ -28,8 +28,8 @@ if($act == "post") {
     if (isset($_POST["canvasinput"])) {
     	// Get the data
     	$imageData = $_POST["canvasinput"];
-	$_POST['filename'] = str_replace(".", "", $_POST['filename']); // more secure
-	$_POST['filename'] = str_replace("/", "", $_POST['filename']); // more secure
+    	$chars = array(".","/","\\"," ","'","\"");
+		$_POST['filename'] = str_replace($chars, "", $_POST['filename']); // more secure
     	$filename = "userimages/" . $_POST["filename"] . ".png";
 
     	// Remove the headers (data:,) part.  
@@ -43,10 +43,17 @@ if($act == "post") {
     	// but a real application can specify filename in POST variable
     	touch($filename);
     	$fp = fopen($filename, 'wb');
-	if ($fp) {
-		fwrite( $fp, $unencodedData);
-		fclose( $fp );
-	}
+		if ($fp) {
+			fwrite( $fp, $unencodedData);
+			fclose( $fp );
+		}
+    }
+    else { // Check that the length of chars is less than 110 characters
+    	if($_POST['content'][110]) {
+    		echo "Content must be less than 110 charactes. Please <a href='showthread.php?id=$thread_id'>go back and try again.</a>";
+    		require_once("inc/footer.inc.php");
+    		die();
+    	}
     }
     
 	$content = (isset($_POST['content']))? $_POST['content'] : $filename;
@@ -87,6 +94,10 @@ if($num_rows == 0) {
 }
 else if($num_rows < 10) {
 	// Display only the most recent turn
+	
+	// since the thread is not finished, only the user who is next on the list for the thread is allowed to view it
+	// Check the user here, starting with whether or not they are allowed to log 
+	
 	$turn = $turns->fetch_object();
 	if($turn->type == "url") { // Game is not finished
 		echo '<div class="postit-draw"><br /><img src="' . $turn->content . '" /></div>';
@@ -139,7 +150,6 @@ else { // Game is finished; display everything
 		else {
 			echo '<div class="postit-write"><br /><div class="fancy">' . $turn->content . '</div></div>';
 		}
-		echo "";
 	}
 }
 

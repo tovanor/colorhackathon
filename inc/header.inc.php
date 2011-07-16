@@ -10,5 +10,8 @@ require_once("config.inc.php"); ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 T
 </head>
 
 <body>
-<p>This is the header!</p><br />
+<div id="header">
+  <img class="logo" />
+  <p>This is the header!</p><br />
+</div>
 <div class="main container_12">

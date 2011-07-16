@@ -41,6 +41,7 @@ if($_SERVER['DOCUMENT_ROOT'] != "/var/www") {
 	
 	if ($user) { 
 	  echo '<a href="' . $logoutUrl . '">Logout</a>';
+	}
 	else { 
 	  echo "<div>
 	    <a href='$loginUrl'>Login with Facebook</a>
@@ -49,9 +50,9 @@ if($_SERVER['DOCUMENT_ROOT'] != "/var/www") {
 	if ($user) {
 	  echo "<h3>You</h3>
 	  <img src='https://graph.facebook.com/$user/picture'>";
+	}
 	else {
 	  echo "<strong><em>You are not Connected.</em></strong>";
 	}
-<?php
 }
 require_once("inc/footer.inc.php"); ?>

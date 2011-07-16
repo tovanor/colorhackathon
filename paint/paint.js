@@ -9,7 +9,6 @@ var oldY = 0; // The mouse's previous y position
 var ctx; // Drawing context
 var undoStack = []; // Stack containing imageData of previous states
 var prefix = "paint/";
-//var prefix = ""
 
 var eraser = new Image();
 eraser.src = prefix + "eraserCursor.png";
@@ -77,7 +76,7 @@ Event.observe(window, 'load', function() {
 	
 	// Set defaults
 	ctx.fillStyle = "white";
-	ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+	//ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 	$("pencil").onclick();
 	$("black").onclick();
 	undoStack.push(ctx.getImageData(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT));
@@ -169,6 +168,8 @@ function changeTool() {
 		ctx.fillStyle = $("currentColor").style.backgroundColor;
 		ctx.lineWidth = 2;
 		ctx.lineCap = "butt";
+		ctx.globalCompositeOperation = "source-over";
+		
 	}
 	
 	else if (currentTool == "eraser") {
@@ -177,6 +178,8 @@ function changeTool() {
 		ctx.strokeStyle = "white";
 		ctx.lineWidth = 16;
 		ctx.lineCap = "round";
+		ctx.globalCompositeOperation = "destination-out";
+		
 	}
 }
 
