@@ -86,7 +86,8 @@ if($act == "post") {
 // Get the given game
 // Most recent at top
 $turns = $c_mysqli->query("SELECT * FROM `turns` WHERE `thread_id` = '$thread_id' ORDER BY turn_number DESC");
-$num_rows = $turns->num_rows;
+$threadObj = $c_mysqli->query("SELECT * FROM `threads` WHERE `id` = '$thread_id'");
+$num_rows = $threadObj->fetch_object()->num_turns;
 if($num_rows == 0) {
     echo "This thread does not exist!";
     require_once("inc/footer.inc.php");
