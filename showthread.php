@@ -91,7 +91,7 @@ if($num_rows == 0) {
     echo "This thread does not exist!";
     require_once("inc/footer.inc.php");
     die();
-} else if($num_rows < 8) {
+} else if($num_rows < 10) {
     // Display only the most recent turn
 
     // since the thread is not finished, only the user who is next on the list for the thread is allowed to view it
